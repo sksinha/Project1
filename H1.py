@@ -7,6 +7,11 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+<style>
+#MainMenu {visibility: hidden;}
+header{visibility: hidden;}
+footer {visibility: hidden;}
+</style>
 
 
 #can apply customisation to almost all the properties of the card, including the progress bar
