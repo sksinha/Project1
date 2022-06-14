@@ -77,7 +77,7 @@ hc.progress_bar(47,'Something something - 4a',key='pa4',sentiment='bad',override
 import datetime
 
 #make it look nice from the start
-st.set_page_config(layout='wide',initial_sidebar_state='collapsed',)
+#st.set_page_config(layout='wide',initial_sidebar_state='collapsed',)
 
 # specify the primary menu definition
 menu_data = [
