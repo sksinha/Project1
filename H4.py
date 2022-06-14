@@ -15,12 +15,4 @@ st.info(f"{menu_id=}")
 #when we import hydralit, we automatically get all of Streamlit
 
 
-app = hc.HydraApp(title='Simple Multi-Page App')
 
-@app.addapp()
-def my_home():
- hc.info('Hello from app1')
-
-@app.addapp()
-def app2():
- hc.info('Hello from app 2')
