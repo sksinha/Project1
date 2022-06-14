@@ -13,7 +13,7 @@ menu_id = hc.nav_bar(menu_definition=menu_data)
 
 st.info(f"{menu_id=}")
 #when we import hydralit, we automatically get all of Streamlit
-import hydralit as hy
+
 
 app = hy.HydraApp(title='Simple Multi-Page App')
 
