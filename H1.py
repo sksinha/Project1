@@ -1,5 +1,18 @@
 import streamlit as st
 import hydralit_components as hc
+st.set_page_config(
+    page_title="FA",
+    page_icon="chart_with_upwards_trend",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+hide_st_style = """
+<style>
+#MainMenu {visibility: hidden;}
+header{visibility: hidden;}
+footer {visibility: hidden;}
+</style>
 
 #can apply customisation to almost all the properties of the card, including the progress bar
 theme_bad = {'bgcolor': '#FFF0F0','title_color': 'red','content_color': 'red','icon_color': 'red', 'icon': 'fa fa-times-circle'}
