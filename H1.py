@@ -36,8 +36,6 @@ with cc[3]:
  #customise the the theming for a neutral content
  hc.info_card(title='Some NEURAL',content='Maybe...',key='sec',bar_value=5,theme_override=theme_neutral)
  #####
-import streamlit as st
-import hydralit_components as hc
 
 # define what option labels and icons to display
 option_data = [
@@ -54,4 +52,4 @@ font_fmt = {'font-size':'150%'}
 op = hc.option_bar(option_definition=option_data,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=True)
 
 # display a version version of the option bar
-op2 = hc.option_bar(option_definition=option_data,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=False)
+#op2 = hc.option_bar(option_definition=option_data,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,horizontal_orientation=False)
