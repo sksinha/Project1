@@ -1,4 +1,5 @@
-import hydralit as hy
+import streamlit as st
+import hydralit_components as hy
 
 app = hy.HydraApp(title='Simple Multi-Page App')
 
