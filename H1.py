@@ -1,5 +1,6 @@
 import streamlit as st
 import hydralit_components as hc
+st.header('This is a Dashboard header')
 st.set_page_config(
     page_title="FA",
     page_icon="chart_with_upwards_trend",
