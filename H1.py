@@ -54,4 +54,3 @@ op = hc.option_bar(option_definition=option_data,title='Feedback Response',key='
 
 # display a version version of the option bar
 op2 = hc.option_bar(option_definition=option_data,title='Feedback Response',key='PrimaryOption',override_theme=over_theme,font_styling=font_fmt,horizontal_orientation=False)
-
