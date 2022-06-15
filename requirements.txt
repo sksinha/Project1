@@ -1,3 +1,4 @@
 plotly_express
 matplotlib
 hydralit_components
+opencv-python
