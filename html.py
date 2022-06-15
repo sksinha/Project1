@@ -1,49 +1,39 @@
-import cv2
 import streamlit as st
-import numpy as np
-from PIL import Image
 
+st.markdown("# Alan Jones")
+st.markdown("## Writer and Developer")
+st.markdown("""
+    I write articles about Data Science, Python and related topics. 
+    The articles are mostly written on the Medium platform.
+    
+    You can find my articles [here](https://alan-jones.medium.com)
+    and if you would like to know when I publish new ones, you can 
+    sign up for an email alert on my Medium 
+    [page](https://alan-jones.medium.com/subscribe).
 
-def brighten_image(image, amount):
-    img_bright = cv2.convertScaleAbs(image, beta=amount)
-    return img_bright
+    Below are a few articles you might find interesting...
+""")
 
+with st.container():
+    image_col, text_col = st.columns((1,2))
+    with image_col:
+        st.image("https://cdn-images-1.medium.com/max/906/1*dVSDol9pouoO9IX_E_-35Q.png")
 
-def blur_image(image, amount):
-    blur_img = cv2.GaussianBlur(image, (11, 11), amount)
-    return blur_img
+    with text_col:
+        st.subheader("A Multi-page Interactive Dashboard with Streamlit and Plotly")
+        st.write("""Beautiful interactive multipage dashboards are made easy with Streamlit
+            """)
+        st.markdown("[Read more...](https://towardsdatascience.com/a-multi-page-interactive-dashboard-with-streamlit-and-plotly-c3182443871a)")
 
+with st.container():
+    image_col, text_col = st.columns((1,2))
+    with image_col:
+        st.image("https://cdn-images-1.medium.com/max/906/1*hjhCIWGgLzOznTFwDyeIeA.png")
 
-def enhance_details(img):
-    hdr = cv2.detailEnhance(img, sigma_s=12, sigma_r=0.15)
-    return hdr
-
-
-def main_loop():
-    st.title("OpenCV Demo App")
-    st.subheader("This app allows you to play with Image filters!")
-    st.text("We use OpenCV and Streamlit for this demo")
-
-    blur_rate = st.sidebar.slider("Blurring", min_value=0.5, max_value=3.5)
-    brightness_amount = st.sidebar.slider("Brightness", min_value=-50, max_value=50, value=0)
-    apply_enhancement_filter = st.sidebar.checkbox('Enhance Details')
-
-    image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'])
-    if not image_file:
-        return None
-
-    original_image = Image.open(image_file)
-    original_image = np.array(original_image)
-
-    processed_image = blur_image(original_image, blur_rate)
-    processed_image = brighten_image(processed_image, brightness_amount)
-
-    if apply_enhancement_filter:
-        processed_image = enhance_details(processed_image)
-
-    st.text("Original Image vs Processed Image")
-    st.image([original_image, processed_image])
-
-
-if __name__ == '__main__':
-    main_loop()
+    with text_col:
+        st.subheader("Rational UI Design with Streamlit")
+        st.write("""
+            From one point of view Streamlit is a retrograde step in web development because 
+            it lets you mix up the logic of your app with the way it is presented. But from 
+            another it is very much simplifying web design.""")
+        st.markdown("[Read more...](https://towardsdatascience.com/rational-ui-design-with-streamlit-61619f7a6ea4)")
