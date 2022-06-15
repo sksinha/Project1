@@ -1,50 +1,53 @@
+
+
+
+
+import cv2
 import streamlit as st
-import streamlit.components.v1 as components
-def main():
-st.title("APP NAME")
-st.markdown("DESCRIPTION")
-# Your code goes below
+import numpy as np
+from PIL import Image
 
 
+def brighten_image(image, amount):
+    img_bright = cv2.convertScaleAbs(image, beta=amount)
+    return img_bright
 
-# bootstrap 4 collapse example
-components.html(
-    """
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <div id="accordion">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Collapsible Group Item #1
-            </button>
-          </h5>
-        </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body">
-            Collapsible Group Item #1 content
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Collapsible Group Item #2
-            </button>
-          </h5>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-          <div class="card-body">
-            Collapsible Group Item #2 content
-          </div>
-        </div>
-      </div>
-    </div>
-    """,
-    height=600,
-)
-if __name__ == "__main__":
-main()
+
+def blur_image(image, amount):
+    blur_img = cv2.GaussianBlur(image, (11, 11), amount)
+    return blur_img
+
+
+def enhance_details(img):
+    hdr = cv2.detailEnhance(img, sigma_s=12, sigma_r=0.15)
+    return hdr
+
+
+def main_loop():
+    st.title("OpenCV Demo App")
+    st.subheader("This app allows you to play with Image filters!")
+    st.text("We use OpenCV and Streamlit for this demo")
+
+    blur_rate = st.sidebar.slider("Blurring", min_value=0.5, max_value=3.5)
+    brightness_amount = st.sidebar.slider("Brightness", min_value=-50, max_value=50, value=0)
+    apply_enhancement_filter = st.sidebar.checkbox('Enhance Details')
+
+    image_file = st.file_uploader("Upload Your Image", type=['jpg', 'png', 'jpeg'])
+    if not image_file:
+        return None
+
+    original_image = Image.open(image_file)
+    original_image = np.array(original_image)
+
+    processed_image = blur_image(original_image, blur_rate)
+    processed_image = brighten_image(processed_image, brightness_amount)
+
+    if apply_enhancement_filter:
+        processed_image = enhance_details(processed_image)
+
+    st.text("Original Image vs Processed Image")
+    st.image([original_image, processed_image])
+
+
+if __name__ == '__main__':
+    main_loop()
