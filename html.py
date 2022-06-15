@@ -1,5 +1,11 @@
 import streamlit as st
 import streamlit.components.v1 as components
+def main():
+st.title("APP NAME")
+st.markdown("DESCRIPTION")
+# Your code goes below
+
+
 
 # bootstrap 4 collapse example
 components.html(
@@ -40,3 +46,5 @@ components.html(
     """,
     height=600,
 )
+if __name__ == "__main__":
+main()
