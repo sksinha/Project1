@@ -1,10 +1,10 @@
 # Core Pkgs
 import streamlit as st
 import pandas as pd
-
+import datetime
 
 def main():
-	st.title("National Cooperative Database Project Task Master")
+	st.title("NCD Project Task Master")
 	menu = ["Home","Creat Task","Update task","views"]
 	choice = st.sidebar.selectbox("Menu",menu)
 
@@ -13,54 +13,20 @@ def main():
 
 		# Task Creater
 		# Combine forms + columns
-		with st.form(key='taskform'):
-			col1,col2,col3 = st.beta_columns([3,2,1])
+		with st.form("my_form"):
+				
+			date1 = st.date_input(  "Task Assign Date",  datetime.date(2023, 3, 3))
+			taskassign = st.selectbox(task",["Anayat","Ravinder","Abhishakh","Kashif","Sohobhit","sanjay Bema;","sanjay Sinha"])
+			taskdes =   st.text_area('Enter brief task: ')
+			date2 = st.date_input(  "Task end Date",  datetime.date(2023, 3, 3))
+						     
+			submit_task = st.form_submit_button(label='submit')			     
+						     
+			     			
+	if submit_button:
+			st.success("Thaks You have submited Task))
 
-			with col1:
-				date1 = st.number_input("Hourly Rate in $")
-
-			with col2:
-				hour_per_week = st.number_input("Hours Per Week",1,120)
-
-			with col3:
-				st.text("Salary")
-				submit_salary = st.form_submit_button(label='Calculate')
-
-		if submit_salary:
-			with st.beta_expander("Results"):
-				daily = [amount * 8]
-				weekly = [amount * hour_per_week]
-				df = pd.DataFrame({'hourly':amount,'daily':daily,'weekly':weekly})
-				st.dataframe(df.T)
-
-
-
-
-		# Method 1: Context Manager Approach (with)
-		with st.form(key='form1'):
-			firstname = st.text_input("Firstname")
-			lastname = st.text_input("lastname")
-			dob = st.date_input("Date of Birth")
-
-			# Important
-			submit_button = st.form_submit_button(label='SignUp')
-
-		# Results Can be either form or outside
-		if submit_button:
-			st.success("Hello {} you ve created an account".format(firstname))
-
-		# Method 2:
-		form2 = st.form(key='form2')
-		username = form2.text_input("Username")
-		jobtype = form2.selectbox("Job",["Dev","Data Scientist","Doctor"])
-		submit_button2 = form2.form_submit_button("Login")
-
-		if submit_button2:
-			st.write(username.upper())
-
-
-
-
+		
 	else:
 		st.subheader("About")
 
