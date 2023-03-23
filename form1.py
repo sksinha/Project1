@@ -24,11 +24,11 @@ def main():
 						     
 			     			
 	if submit_button:
-			st.success("Thaks You have submited Task))
+			st.success("Thaks You have submited Task")
 
 		
 	else:
-		st.subheader("About")
+		st.subheader("Home")
 
 
 
