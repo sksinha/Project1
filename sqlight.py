@@ -62,7 +62,7 @@ st.markdown('#')
 c.execute("select count(*) from pwd_mgr")
 db_size = c.fetchone()[0] 
 
-c.execute("select app_name from pwd_mgr")
+c.execute("select app_name from TASK")
 app_names = c.fetchall()
 app_names = [i[0] for i in app_names]
 
