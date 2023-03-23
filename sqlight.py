@@ -59,7 +59,7 @@ def update_password(app,new_pass_word):
 st.title("Password Manager 🔐")
 st.markdown('#')
 
-c.execute("select count(*) from pwd_mgr")
+c.execute("select count(*) from TASK")
 db_size = c.fetchone()[0] 
 
 c.execute("select app_name from TASK")
