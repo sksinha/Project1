@@ -38,21 +38,21 @@ c.execute("""CREATE TABLE if not exists TASK (app_name varchar(20) not null,
 
 def insert_data(u):
     with conn:
-        c.execute("insert into pwd_mgr values (:app, :user, :pass, :email, :url)", 
+        c.execute("insert into TASK values (:app, :user, :pass, :email, :url)", 
                   {'app': u.app, 'user': u.username, 'pass': u.password, 'email': u.email, 'url': u.url})
         
 def get_cred_by_app(app):
     with conn:
-        c.execute("select app_name, user_name, pass_word, email_address, url FROM pwd_mgr where app_name = :name;", {'name': app})
+        c.execute("select app_name, user_name, pass_word, email_address, url FROM TASK where app_name = :name;", {'name': app})
         return c.fetchone()
     
 def remove_app_cred(app):
     with conn:
-        c.execute("DELETE from pwd_mgr WHERE app_name = :name", {'name': app})
+        c.execute("DELETE from TASK WHERE app_name = :name", {'name': app})
         
 def update_password(app,new_pass_word):
     with conn:
-        c.execute("update pwd_mgr set pass_word = :pass where app_name = :name", 
+        c.execute("update TASK set pass_word = :pass where app_name = :name", 
                   {'name': app, 'pass': new_pass_word})
 
 
