@@ -22,7 +22,7 @@ def main():
 			submit_task = st.form_submit_button(label='submit')			     
 			if submit_button:
 					st.success("Thaks You have submited Task")
-				else:
+			else:
 					st.subheader("Home")
 
 
