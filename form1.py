@@ -20,7 +20,7 @@ def main():
 			taskdes =   st.text_area('Enter brief task: ')
 			date2 = st.date_input(  "Task end Date",  datetime.date(2023, 3, 3))			     
 			submit_task = st.form_submit_button(label='submit')			     
-			if submit_button:
+			if submit_task:
 					st.success("Thaks You have submited Task")
 			else:
 					st.subheader("Home")
