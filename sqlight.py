@@ -43,8 +43,7 @@ def insert_data(u):
         
 def get_cred_by_app(app):
     with conn:
-        c.execute("select app_name, user_name, pass_word, email_address, 
-                   url FROM pwd_mgr where app_name = :name;", {'name': app})
+        c.execute("select app_name, user_name, pass_word, email_address, url FROM pwd_mgr where app_name = :name;", {'name': app})
         return c.fetchone()
     
 def remove_app_cred(app):
