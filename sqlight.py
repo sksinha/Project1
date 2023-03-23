@@ -1,7 +1,7 @@
 import streamlit as st 
 import webbrowser
 import sqlite3
-from user import User
+#from user import User
 
 st.set_page_config(page_title="TMS", page_icon="🚀" )     
 page_bg_img = f"""
