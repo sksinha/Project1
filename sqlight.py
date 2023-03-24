@@ -4,28 +4,11 @@ import sqlite3
 #from user import User
 
 st.set_page_config(page_title="TMS", page_icon="🚀" )     
-page_bg_img = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-background-image: url("Image-of-your-choice");
-background-size: 100%;
-display: flex;
-background-position: top left;
-background-repeat: no-repeat;
-background-attachment: local;
-}}
-[data-testid="stHeader"] {{
-background: rgba(0,0,0,0);
-}}
-[data-testid="stToolbar"] {{
-right: 2rem;
-}}
-</style>
-"""
+
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
-conn = sqlite3.connect("pwd.db")
+conn = sqlite3.connect("data/sks.db")
 c = conn.cursor()
 c.execute("""CREATE TABLE if not exists TASK (app_name varchar(20) not null,
                         user_name varchar(50) not null,
