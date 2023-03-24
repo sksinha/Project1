@@ -4,15 +4,13 @@ import pandas as pd
 
 
 def main():
-	st.title("National Cooperative Database Project Task Master")
+	st.title("NCD Task Master")
 	menu = ["Home","Creat Task","Update task","views"]
 	choice = st.sidebar.selectbox("Menu",menu)
 
 	if choice == "Home":
 		st.subheader("Creat Task")
 
-		# Task Creater
-		# Combine forms + columns
 		with st.form(key='taskform'):
 			col1,col2,col3 = st.beta_columns([3,2,1])
 
